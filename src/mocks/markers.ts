@@ -4,7 +4,7 @@ import { AnimationDirection, AnimationType, MapMarker } from "@carlossts/react-n
 export const MARKERS: MapMarker[] = [
   {
     id: "1",
-    position: { lat: -4.0553, lng: -38.1869 },
+    position: { lat: -4.1248, lng: -38.2220 },
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HFyPaHG8Sej123no8Nl9ehr3Erf-Xf9VJw&s",
     size: [40, 40],
     title: "ÁGUAS BELAS BEACH",
@@ -24,10 +24,11 @@ export const MARKERS: MapMarker[] = [
     titleStyle: "font-size:12px; font-weight:700;",
     closeButton: true,
     openPopupOnAdd: true,
+    autoClose:false,
   },
   {
     id: "2",
-    position: { lat: -4.1393855, lng: -38.2429761 },
+    position: { lat: -4.1528, lng: -38.2570 },
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZOu743ybl0D1o_HU-8bblVH4e-VVtrnD_xQ&s",
     size: [48, 48],
     title: "Main Square",
@@ -69,10 +70,11 @@ export const MARKERS: MapMarker[] = [
     popupMaxWidth: 260,
     closeButton: false,
     openPopupOnAdd: true,
+    autoClose:true,
   },
   {
     id: "3",
-    position: { lat: -4.1331481, lng: -38.2441773 },
+    position: { lat: -4.1200, lng: -38.2528 },
     icon: "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=200",
     size: [48, 48],
     title: "São Francisco Square",
@@ -91,17 +93,31 @@ Leisure and community space
 <br/><br/>
 
 <button 
-  onclick="window.ReactNativeWebView.postMessage(JSON.stringify({
-    type: 'custom',
-    event: 'OPEN_MAPS',
-    payload: {
-      mapCenterPosition: {
-        lat: -4.1331481,
-        lng: -38.2441773
-      }
-    },
-    msg: 'São Francisco Square'
-  }))"
+  onclick="(function(){
+    var payload = {
+      type: 'custom',
+      event: 'OPEN_MAPS',
+      payload: {
+        mapCenterPosition: {
+          lat: -4.1331481,
+          lng: -38.2441773
+        }
+      },
+      msg: 'São Francisco Square'
+    };
+
+    if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+      window.ReactNativeWebView.postMessage(JSON.stringify(payload));
+      return;
+    }
+
+    var label = encodeURIComponent(payload.msg || 'Pinned location');
+    var url = 'https://www.google.com/maps?q=' +
+      payload.payload.mapCenterPosition.lat + ',' +
+      payload.payload.mapCenterPosition.lng + '(' + label + ')';
+
+    window.open(url, '_blank', 'noopener,noreferrer');
+  })()"
   style="
     width:100%;
     background:#2563eb;
