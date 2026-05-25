@@ -31,6 +31,20 @@ This project enhances the official example with extra map elements and UI polish
 	</tr>
 </table>
 
+<table>
+	<tr>
+		<td align="center">
+			<img src="https://res.cloudinary.com/dbw8igay3/image/upload/ios_dfhqyn.jpg" alt="iOS Screenshot" width="350" />
+		</td>
+		<td align="center">
+			<img src="https://res.cloudinary.com/dbw8igay3/image/upload/android_pas1we.jpg" alt="Android Screenshot" width="440" />
+		</td>
+		 <td align="center">
+			<img src="https://res.cloudinary.com/dbw8igay3/image/upload/web_rlvif1.jpg" alt="Web Screenshot" width="1340" />
+		</td>
+	</tr>
+</table>
+
 ## Getting Started
 
 Install dependencies:
