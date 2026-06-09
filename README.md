@@ -10,10 +10,8 @@ This project enhances the official example with extra map elements and UI polish
 - Popup button that opens the location in Google Maps
 - OSRM route between points with distance/time summary
 - Shapes: polygons, circles, rectangles, and circle markers
-- Status panel showing current center and zoom
 - Own-position marker with custom styling
 - Custom zoom control styling
-- Settings toggles for library props only (clustering, zoom, attribution, debug)
 
 ## Screenshots
 
